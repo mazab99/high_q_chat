@@ -1,0 +1,31 @@
+name: high_q_chat
+version: 1.0.0
+description: Package handles the chat screen in your app .
+homepage: 
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+# Add regular dependencies here.
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.19.0
+  flutter_linkify: ^6.0.0
+  url_launcher: ^6.2.4
+  emoji_picker_flutter: ^2.0.0
+  html: ^0.15.4
+  http: ^1.2.1
+  any_link_preview: ^3.0.1
+  progress_indicators: ^1.0.0
+  image_picker: ^1.0.7
+  timeago: ^3.6.1
+  file_picker: ^6.1.1
+  grouped_list: ^5.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  version: ^2.0.0
+  flutter_lints: ^3.0.1
+
