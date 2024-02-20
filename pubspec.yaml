@@ -1,5 +1,5 @@
 name: high_q_chat
-version: 1.0.1
+version: 1.0.2
 description: Package handles the chat screen in your app .
 homepage: https://github.com/mazab99/high_q_chat
 
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.19.0
+  intl: ^0.18.1
   flutter_linkify: ^6.0.0
   url_launcher: ^6.2.4
   emoji_picker_flutter: ^2.0.0
