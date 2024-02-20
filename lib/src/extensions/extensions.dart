@@ -1,6 +1,6 @@
 
 import 'package:high_q_chat/high_q_chat.dart';
-import 'package:high_q_chat/src/widgets/chat_view_inherited_widget.dart';
+import 'package:high_q_chat/src/widgets/high_q_chat_inherited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../utils/constants/constants.dart';
@@ -87,16 +87,16 @@ extension ConnectionStates on ConnectionState {
 }
 
 /// Extension on nullable sting to return specific state string.
-extension ChatViewStateTitleExtension on String? {
-  String getChatViewStateTitle(ChatViewState state) {
+extension HighQChatStateTitleExtension on String? {
+  String getHighQChatStateTitle(HighQChatState state) {
     switch (state) {
-      case ChatViewState.hasMessages:
+      case HighQChatState.hasMessages:
         return this ?? '';
-      case ChatViewState.noData:
+      case HighQChatState.noData:
         return this ?? 'No Messages';
-      case ChatViewState.loading:
+      case HighQChatState.loading:
         return this ?? '';
-      case ChatViewState.error:
+      case HighQChatState.error:
         return this ?? 'Something went wrong !!';
     }
   }
@@ -104,5 +104,5 @@ extension ChatViewStateTitleExtension on String? {
 
 /// Extension on State for accessing inherited widget.
 extension StatefulWidgetExtension on State {
-  ChatViewInheritedWidget? get provide => ChatViewInheritedWidget.of(context);
+  HighQChatInheritedWidget? get provide => HighQChatInheritedWidget.of(context);
 }

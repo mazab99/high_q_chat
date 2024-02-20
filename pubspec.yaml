@@ -1,7 +1,7 @@
 name: high_q_chat
-version: 1.0.0
+version: 1.0.1
 description: Package handles the chat screen in your app .
-homepage: 
+homepage: https://github.com/mazab99/high_q_chat
 
 environment:
   sdk: '>=3.2.3 <4.0.0'

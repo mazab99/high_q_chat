@@ -1,6 +1,6 @@
 
 import 'package:high_q_chat/high_q_chat.dart';
-import 'package:high_q_chat/src/widgets/chat_view_inherited_widget.dart';
+import 'package:high_q_chat/src/widgets/high_q_chat_inherited_widget.dart';
 import 'package:high_q_chat/src/widgets/file_message_view.dart';
 import 'package:flutter/material.dart';
 
@@ -244,7 +244,7 @@ class _MessageViewState extends State<MessageView>
                   widget.controller?.initialMessageList.last.id ==
                       widget.message.id &&
                   widget.message.status == MessageStatus.read) {
-                if (ChatViewInheritedWidget.of(context)
+                if (HighQChatInheritedWidget.of(context)
                         ?.featureActiveConfig
                         .lastSeenAgoBuilderVisibility ??
                     true) {

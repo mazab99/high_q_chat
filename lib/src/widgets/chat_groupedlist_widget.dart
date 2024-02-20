@@ -1,7 +1,7 @@
 
 import 'package:high_q_chat/high_q_chat.dart';
 import 'package:high_q_chat/src/extensions/extensions.dart';
-import 'package:high_q_chat/src/widgets/chat_view_inherited_widget.dart';
+import 'package:high_q_chat/src/widgets/high_q_chat_inherited_widget.dart';
 import 'package:high_q_chat/src/widgets/type_indicator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
@@ -176,7 +176,7 @@ class _ChatGroupedListWidgetState extends State<ChatGroupedListWidget>
                   profilePic: profileCircleConfig?.profileImageUrl,
                 )
               : ValueListenableBuilder(
-                  valueListenable: ChatViewInheritedWidget.of(context)!
+                  valueListenable: HighQChatInheritedWidget.of(context)!
                       .chatController
                       .typingIndicatorNotifier,
                   builder: (context, value, child) => TypingIndicator(

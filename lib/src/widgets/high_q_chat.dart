@@ -1,15 +1,15 @@
 
 import 'package:high_q_chat/high_q_chat.dart';
 import 'package:high_q_chat/src/widgets/chat_list_widget.dart';
-import 'package:high_q_chat/src/widgets/chat_view_inherited_widget.dart';
-import 'package:high_q_chat/src/widgets/chatview_state_widget.dart';
+import 'package:high_q_chat/src/widgets/high_q_chat_inherited_widget.dart';
+import 'package:high_q_chat/src/widgets/high_q_chatstate_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart';
 import '../values/custom_time_messages.dart';
 import 'send_message_widget.dart';
 
-class ChatView extends StatefulWidget {
-  const ChatView({
+class HighQChat extends StatefulWidget {
+  const HighQChat({
     Key? key,
     required this.chatController,
     required this.currentUser,
@@ -30,13 +30,13 @@ class ChatView extends StatefulWidget {
     this.sendMessageBuilder,
     this.showTypingIndicator = false,
     this.sendMessageConfig,
-    required this.chatViewState,
-    ChatViewStateConfiguration? chatViewStateConfig,
+    required this.highQChatState,
+    HighQChatStateConfiguration? highQChatStateConfig,
     this.featureActiveConfig = const FeatureActiveConfig(),
   })  : chatBackgroundConfig =
             chatBackgroundConfig ?? const ChatBackgroundConfiguration(),
-        chatViewStateConfig =
-            chatViewStateConfig ?? const ChatViewStateConfiguration(),
+        highQChatStateConfig =
+            highQChatStateConfig ?? const HighQChatStateConfiguration(),
         super(key: key);
 
   /// Provides configuration related to user profile circle avatar.
@@ -99,10 +99,10 @@ class ChatView extends StatefulWidget {
   final SendMessageConfiguration? sendMessageConfig;
 
   /// Provides current state of chat.
-  final ChatViewState chatViewState;
+  final HighQChatState highQChatState;
 
   /// Provides configuration for chat view state appearance and functionality.
-  final ChatViewStateConfiguration? chatViewStateConfig;
+  final HighQChatStateConfiguration? highQChatStateConfig;
 
   /// Provides current user which is sending messages.
   final ChatUser currentUser;
@@ -110,14 +110,14 @@ class ChatView extends StatefulWidget {
   /// Provides configuration for turn on/off specific features.
   final FeatureActiveConfig featureActiveConfig;
 
-  /// Provides parameter so user can assign ChatViewAppbar.
+  /// Provides parameter so user can assign HighQChatAppbar.
   final Widget? appBar;
 
   @override
-  State<ChatView> createState() => _ChatViewState();
+  State<HighQChat> createState() => _HighQChatState();
 }
 
-class _ChatViewState extends State<ChatView>
+class _HighQChatState extends State<HighQChat>
     with SingleTickerProviderStateMixin {
   final GlobalKey<SendMessageWidgetState> _sendMessageKey = GlobalKey();
   ValueNotifier<ReplyMessage> replyMessage =
@@ -130,10 +130,10 @@ class _ChatViewState extends State<ChatView>
   ChatBackgroundConfiguration get chatBackgroundConfig =>
       widget.chatBackgroundConfig;
 
-  ChatViewState get chatViewState => widget.chatViewState;
+  HighQChatState get highQChatState => widget.highQChatState;
 
-  ChatViewStateConfiguration? get chatViewStateConfig =>
-      widget.chatViewStateConfig;
+  HighQChatStateConfiguration? get highQChatStateConfig =>
+      widget.highQChatStateConfig;
 
   FeatureActiveConfig get featureActiveConfig => widget.featureActiveConfig;
 
@@ -152,10 +152,10 @@ class _ChatViewState extends State<ChatView>
     // ignore: deprecated_member_use_from_same_package
     if (widget.showTypingIndicator ||
         widget.chatController.showTypingIndicator &&
-            chatViewState.hasMessages) {
+            highQChatState.hasMessages) {
       chatController.scrollToLastMessage();
     }
-    return ChatViewInheritedWidget(
+    return HighQChatInheritedWidget(
       chatController: chatController,
       featureActiveConfig: featureActiveConfig,
       currentUser: widget.currentUser,
@@ -180,27 +180,27 @@ class _ChatViewState extends State<ChatView>
             Expanded(
               child: Stack(
                 children: [
-                  if (chatViewState.isLoading)
-                    ChatViewStateWidget(
-                      chatViewStateWidgetConfig:
-                          chatViewStateConfig?.loadingWidgetConfig,
-                      chatViewState: chatViewState,
+                  if (highQChatState.isLoading)
+                    HighQChatStateWidget(
+                      highQChatStateWidgetConfig:
+                          highQChatStateConfig?.loadingWidgetConfig,
+                      highQChatState: highQChatState,
                     )
-                  else if (chatViewState.noMessages)
-                    ChatViewStateWidget(
-                      chatViewStateWidgetConfig:
-                          chatViewStateConfig?.noMessageWidgetConfig,
-                      chatViewState: chatViewState,
-                      onReloadButtonTap: chatViewStateConfig?.onReloadButtonTap,
+                  else if (highQChatState.noMessages)
+                    HighQChatStateWidget(
+                      highQChatStateWidgetConfig:
+                          highQChatStateConfig?.noMessageWidgetConfig,
+                      highQChatState: highQChatState,
+                      onReloadButtonTap: highQChatStateConfig?.onReloadButtonTap,
                     )
-                  else if (chatViewState.isError)
-                    ChatViewStateWidget(
-                      chatViewStateWidgetConfig:
-                          chatViewStateConfig?.errorWidgetConfig,
-                      chatViewState: chatViewState,
-                      onReloadButtonTap: chatViewStateConfig?.onReloadButtonTap,
+                  else if (highQChatState.isError)
+                    HighQChatStateWidget(
+                      highQChatStateWidgetConfig:
+                          highQChatStateConfig?.errorWidgetConfig,
+                      highQChatState: highQChatState,
+                      onReloadButtonTap: highQChatStateConfig?.onReloadButtonTap,
                     )
-                  else if (chatViewState.hasMessages)
+                  else if (highQChatState.hasMessages)
                     ValueListenableBuilder<ReplyMessage>(
                       valueListenable: replyMessage,
                       builder: (_, state, child) {

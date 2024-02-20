@@ -1,9 +1,8 @@
 import 'package:high_q_chat/src/utils/constants/constants.dart';
-import 'package:high_q_chat/src/widgets/chat_view_inherited_widget.dart';
+import 'package:high_q_chat/src/widgets/high_q_chat_inherited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:high_q_chat/src/extensions/extensions.dart';
 import '../controller/chat_controller.dart';
-import '../models/message.dart';
 import '../models/models.dart';
 import '../values/enumaration.dart';
 import '../values/typedefs.dart';
@@ -238,7 +237,7 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
       return ValueListenableBuilder(
         valueListenable: widget.message.statusNotifier,
         builder: (context, value, child) {
-          if (ChatViewInheritedWidget.of(context)
+          if (HighQChatInheritedWidget.of(context)
                   ?.featureActiveConfig
                   .receiptsBuilderVisibility ??
               true) {
@@ -255,7 +254,7 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
           valueListenable:
               chatController!.initialMessageList.last.statusNotifier,
           builder: (context, value, child) {
-            if (ChatViewInheritedWidget.of(context)
+            if (HighQChatInheritedWidget.of(context)
                     ?.featureActiveConfig
                     .receiptsBuilderVisibility ??
                 true) {

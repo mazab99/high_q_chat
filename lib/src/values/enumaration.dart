@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-// Different types Message of ChatView
+// Different types Message of HighQChat
 enum MessageType {
   file,
   image,
@@ -40,16 +40,16 @@ enum TypeWriterStatus { typing, typed }
 enum MessageStatus { sent, read, delivered, undelivered, pending }
 
 /// Types of states
-enum ChatViewState { hasMessages, noData, loading, error }
+enum HighQChatState { hasMessages, noData, loading, error }
 
 enum ShowReceiptsIn { all, lastMessage }
 
-extension ChatViewStateExtension on ChatViewState {
-  bool get hasMessages => this == ChatViewState.hasMessages;
+extension HighQChatStateExtension on HighQChatState {
+  bool get hasMessages => this == HighQChatState.hasMessages;
 
-  bool get isLoading => this == ChatViewState.loading;
+  bool get isLoading => this == HighQChatState.loading;
 
-  bool get isError => this == ChatViewState.error;
+  bool get isError => this == HighQChatState.error;
 
-  bool get noMessages => this == ChatViewState.noData;
+  bool get noMessages => this == HighQChatState.noData;
 }

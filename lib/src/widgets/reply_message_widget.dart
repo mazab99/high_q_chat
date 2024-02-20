@@ -6,7 +6,7 @@ import 'package:high_q_chat/src/models/models.dart';
 import 'package:high_q_chat/src/utils/package_strings.dart';
 
 import '../utils/constants/constants.dart';
-import 'chat_view_inherited_widget.dart';
+import 'high_q_chat_inherited_widget.dart';
 import 'vertical_line.dart';
 
 class ReplyMessageWidget extends StatelessWidget {
@@ -29,11 +29,11 @@ class ReplyMessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentUser = ChatViewInheritedWidget.of(context)?.currentUser;
+    final currentUser = HighQChatInheritedWidget.of(context)?.currentUser;
     final replyBySender = message.replyMessage.replyBy == currentUser?.id;
     final textTheme = Theme.of(context).textTheme;
     final replyMessage = message.replyMessage.message;
-    final chatController = ChatViewInheritedWidget.of(context)?.chatController;
+    final chatController = HighQChatInheritedWidget.of(context)?.chatController;
     final messagedUser =
         chatController?.getUserFromId(message.replyMessage.replyBy);
     final replyBy = replyBySender ? PackageStrings.you : messagedUser?.name;

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 import '../values/typedefs.dart';
 
-class ChatViewAppBar extends StatelessWidget {
-  const ChatViewAppBar({
+class HighQChatAppBar extends StatelessWidget {
+  const HighQChatAppBar({
     Key? key,
     required this.chatTitle,
     this.backGroundColor,

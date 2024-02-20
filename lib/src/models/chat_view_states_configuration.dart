@@ -1,29 +1,29 @@
 import 'package:high_q_chat/src/values/typedefs.dart';
 import 'package:flutter/material.dart';
 
-class ChatViewStateConfiguration {
-  const ChatViewStateConfiguration({
-    this.errorWidgetConfig = const ChatViewStateWidgetConfiguration(),
-    this.noMessageWidgetConfig = const ChatViewStateWidgetConfiguration(),
-    this.loadingWidgetConfig = const ChatViewStateWidgetConfiguration(),
+class HighQChatStateConfiguration {
+  const HighQChatStateConfiguration({
+    this.errorWidgetConfig = const HighQChatStateWidgetConfiguration(),
+    this.noMessageWidgetConfig = const HighQChatStateWidgetConfiguration(),
+    this.loadingWidgetConfig = const HighQChatStateWidgetConfiguration(),
     this.onReloadButtonTap,
   });
 
   /// Provides configuration of error state's widget.
-  final ChatViewStateWidgetConfiguration? errorWidgetConfig;
+  final HighQChatStateWidgetConfiguration? errorWidgetConfig;
 
   /// Provides configuration of no message state's widget.
-  final ChatViewStateWidgetConfiguration? noMessageWidgetConfig;
+  final HighQChatStateWidgetConfiguration? noMessageWidgetConfig;
 
   /// Provides configuration of loading state's widget.
-  final ChatViewStateWidgetConfiguration? loadingWidgetConfig;
+  final HighQChatStateWidgetConfiguration? loadingWidgetConfig;
 
   /// Provides callback when user taps on reload button.
   final VoidCallBack? onReloadButtonTap;
 }
 
-class ChatViewStateWidgetConfiguration {
-  const ChatViewStateWidgetConfiguration({
+class HighQChatStateWidgetConfiguration {
+  const HighQChatStateWidgetConfiguration({
     this.widget,
     this.title,
     this.titleTextStyle,

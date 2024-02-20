@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:high_q_chat/high_q_chat.dart';
 
-class ChatViewInheritedWidget extends InheritedWidget {
-  const ChatViewInheritedWidget({
+class HighQChatInheritedWidget extends InheritedWidget {
+  const HighQChatInheritedWidget({
     Key? key,
     required Widget child,
     required this.featureActiveConfig,
@@ -13,10 +13,10 @@ class ChatViewInheritedWidget extends InheritedWidget {
   final ChatController chatController;
   final ChatUser currentUser;
 
-  static ChatViewInheritedWidget? of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<ChatViewInheritedWidget>();
+  static HighQChatInheritedWidget? of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<HighQChatInheritedWidget>();
 
   @override
-  bool updateShouldNotify(covariant ChatViewInheritedWidget oldWidget) =>
+  bool updateShouldNotify(covariant HighQChatInheritedWidget oldWidget) =>
       oldWidget.featureActiveConfig != featureActiveConfig;
 }

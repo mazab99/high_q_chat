@@ -2,20 +2,20 @@ import 'package:high_q_chat/high_q_chat.dart';
 import 'package:high_q_chat/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
-class ChatViewStateWidget extends StatelessWidget {
-  const ChatViewStateWidget({
+class HighQChatStateWidget extends StatelessWidget {
+  const HighQChatStateWidget({
     Key? key,
-    this.chatViewStateWidgetConfig,
-    required this.chatViewState,
+    this.highQChatStateWidgetConfig,
+    required this.highQChatState,
     this.onReloadButtonTap,
   }) : super(key: key);
 
   /// Provides configuration of chat view's different states such as text styles,
   /// widgets and etc.
-  final ChatViewStateWidgetConfiguration? chatViewStateWidgetConfig;
+  final HighQChatStateWidgetConfiguration? highQChatStateWidgetConfig;
 
   /// Provides current state of chat view.
-  final ChatViewState chatViewState;
+  final HighQChatState highQChatState;
 
   /// Provides callback when user taps on reload button in error and no messages
   /// state.
@@ -24,50 +24,50 @@ class ChatViewStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: chatViewStateWidgetConfig?.widget ??
+      child: highQChatStateWidgetConfig?.widget ??
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SelectableText(
-                (chatViewStateWidgetConfig?.title
-                    .getChatViewStateTitle(chatViewState))!,
+                (highQChatStateWidgetConfig?.title
+                    .getHighQChatStateTitle(highQChatState))!,
                 cursorColor: Colors.red,
                 showCursor: true,
                 toolbarOptions: ToolbarOptions(
                     copy: true, selectAll: true, cut: false, paste: false),
-                style: chatViewStateWidgetConfig?.titleTextStyle ??
+                style: highQChatStateWidgetConfig?.titleTextStyle ??
                     const TextStyle(
                       fontSize: 22,
                     ),
               ),
-              if (chatViewStateWidgetConfig?.subTitle != null)
+              if (highQChatStateWidgetConfig?.subTitle != null)
                 SelectableText(
-                  (chatViewStateWidgetConfig?.subTitle)!,
+                  (highQChatStateWidgetConfig?.subTitle)!,
                   cursorColor: Colors.red,
                   showCursor: true,
                   toolbarOptions: ToolbarOptions(
                       copy: true, selectAll: true, cut: false, paste: false),
-                  style: chatViewStateWidgetConfig?.subTitleTextStyle,
+                  style: highQChatStateWidgetConfig?.subTitleTextStyle,
                 ),
-              if (chatViewState.isLoading)
+              if (highQChatState.isLoading)
                 CircularProgressIndicator(
-                  color: chatViewStateWidgetConfig?.loadingIndicatorColor,
+                  color: highQChatStateWidgetConfig?.loadingIndicatorColor,
                 ),
-              if (chatViewStateWidgetConfig?.imageWidget != null)
-                (chatViewStateWidgetConfig?.imageWidget)!,
-              if (chatViewStateWidgetConfig?.reloadButton != null)
-                (chatViewStateWidgetConfig?.reloadButton)!,
-              if (chatViewStateWidgetConfig != null &&
-                  (chatViewStateWidgetConfig?.showDefaultReloadButton)! &&
-                  chatViewStateWidgetConfig?.reloadButton == null &&
-                  (chatViewState.isError || chatViewState.noMessages)) ...[
+              if (highQChatStateWidgetConfig?.imageWidget != null)
+                (highQChatStateWidgetConfig?.imageWidget)!,
+              if (highQChatStateWidgetConfig?.reloadButton != null)
+                (highQChatStateWidgetConfig?.reloadButton)!,
+              if (highQChatStateWidgetConfig != null &&
+                  (highQChatStateWidgetConfig?.showDefaultReloadButton)! &&
+                  highQChatStateWidgetConfig?.reloadButton == null &&
+                  (highQChatState.isError || highQChatState.noMessages)) ...[
                 const SizedBox(height: 8),
                 ElevatedButton(
                   onPressed: onReloadButtonTap,
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
-                        chatViewStateWidgetConfig?.reloadButtonColor ??
+                        highQChatStateWidgetConfig?.reloadButtonColor ??
                             const Color(0xffEE5366),
                   ),
                   child: const SelectableText(

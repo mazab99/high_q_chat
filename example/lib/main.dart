@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xffEE5366),
         colorScheme:
-        ColorScheme.fromSwatch(accentColor: const Color(0xffEE5366)),
+            ColorScheme.fromSwatch(accentColor: const Color(0xffEE5366)),
       ),
       home: const ChatScreen(),
     );
@@ -74,7 +74,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ChatView(
+      body: HighQChat(
         currentUser: currentUser,
         chatController: _chatController,
         onSendTap: _onSendTap,
@@ -83,9 +83,9 @@ class _ChatScreenState extends State<ChatScreen> {
             enableSwipeToSeeTime: true,
             lastSeenAgoBuilderVisibility: true,
             receiptsBuilderVisibility: true),
-        chatViewState: ChatViewState.hasMessages,
-        chatViewStateConfig: ChatViewStateConfiguration(
-          loadingWidgetConfig: ChatViewStateWidgetConfiguration(
+        highQChatState: HighQChatState.hasMessages,
+        highQChatStateConfig: HighQChatStateConfiguration(
+          loadingWidgetConfig: HighQChatStateWidgetConfiguration(
             loadingIndicatorColor: theme.outgoingChatBubbleColor,
           ),
           onReloadButtonTap: () {},
@@ -94,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen> {
           flashingCircleBrightColor: theme.flashingCircleBrightColor,
           flashingCircleDarkColor: theme.flashingCircleDarkColor,
         ),
-        appBar: ChatViewAppBar(
+        appBar: HighQChatAppBar(
           elevation: theme.elevation,
           backGroundColor: theme.appBarColor,
           profilePicture: Data.profileImage,
@@ -177,7 +177,7 @@ class _ChatScreenState extends State<ChatScreen> {
               titleStyle: theme.outgoingChatLinkTitleStyle,
             ),
             receiptsWidgetConfig:
-            const ReceiptsWidgetConfig(showReceiptsIn: ShowReceiptsIn.all),
+                const ReceiptsWidgetConfig(showReceiptsIn: ShowReceiptsIn.all),
             color: theme.outgoingChatBubbleColor,
             onDownloadTap: (msg) {
               debugPrint(msg.fileName);
@@ -202,7 +202,7 @@ class _ChatScreenState extends State<ChatScreen> {
               debugPrint(msg.fileName);
             },
             senderNameTextStyle:
-            TextStyle(color: theme.inComingChatBubbleTextColor),
+                TextStyle(color: theme.inComingChatBubbleTextColor),
             color: theme.inComingChatBubbleColor,
           ),
         ),
@@ -223,9 +223,9 @@ class _ChatScreenState extends State<ChatScreen> {
             backgroundColor: theme.messageReactionBackGroundColor,
             borderColor: theme.messageReactionBackGroundColor,
             reactedUserCountTextStyle:
-            TextStyle(color: theme.inComingChatBubbleTextColor),
+                TextStyle(color: theme.inComingChatBubbleTextColor),
             reactionCountTextStyle:
-            TextStyle(color: theme.inComingChatBubbleTextColor),
+                TextStyle(color: theme.inComingChatBubbleTextColor),
             reactionsBottomSheetConfig: ReactionsBottomSheetConfiguration(
               backgroundColor: theme.backgroundColor,
               reactedUserTextStyle: TextStyle(
@@ -278,10 +278,10 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _onSendTap(
-      String message,
-      ReplyMessage replyMessage,
-      MessageType messageType,
-      ) {
+    String message,
+    ReplyMessage replyMessage,
+    MessageType messageType,
+  ) {
     final id = int.parse(Data.messageList.last.id) + 1;
     _chatController.addMessage(
       Message(
