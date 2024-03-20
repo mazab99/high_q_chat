@@ -61,12 +61,12 @@ class ReactionsBottomSheet {
                                     ?.profileCircleRadius ??
                                 16,
                             backgroundImage: NetworkImage(
-                              reactedUser.profilePhoto ?? profileImage,
+                              reactedUser!.profilePhoto ?? profileImage,
                             ),
                           ),
                           const SizedBox(width: 12),
                           Text(
-                            reactedUser.name,
+                            reactedUser!.name,
                             style: reactionsBottomSheetConfig
                                 ?.reactedUserTextStyle,
                           ),

@@ -3,11 +3,6 @@ import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
-/// This is code is take from the https://github.com/petehouston/flutter-emoji/blob/master/lib/flutter_emoji.dart
-/// All Credit of below class goes to @petehouston flutter_emoji
-///
-/// Constants defined for Emoji.
-///
 class EmojiConst {
   static final String charNonSpacingMark = String.fromCharCode(0xfe0f);
   static const String charColon = ':';

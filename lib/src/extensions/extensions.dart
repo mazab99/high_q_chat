@@ -1,4 +1,3 @@
-
 import 'package:high_q_chat/high_q_chat.dart';
 import 'package:high_q_chat/src/widgets/high_q_chat_inherited_widget.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +70,8 @@ extension MessageTypes on MessageType {
   bool get isFile => this == MessageType.file;
 
   bool get isImage => this == MessageType.image;
+
+  bool get isTextAndImage => this == MessageType.textAndImage;
 
   bool get isText => this == MessageType.text;
 

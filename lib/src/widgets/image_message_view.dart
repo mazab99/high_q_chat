@@ -61,8 +61,7 @@ class ImageMessageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment:
-          isMessageBySender ? MainAxisAlignment.end : MainAxisAlignment.start,
+      mainAxisAlignment: isMessageBySender ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
         if (isMessageBySender) iconButton,
         Stack(

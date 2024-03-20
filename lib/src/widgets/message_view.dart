@@ -5,6 +5,7 @@ import 'package:high_q_chat/src/widgets/file_message_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:high_q_chat/src/extensions/extensions.dart';
+import 'package:high_q_chat/src/widgets/text_and_image_message_view.dart';
 import '../utils/constants/constants.dart';
 import 'image_message_view.dart';
 import 'text_message_view.dart';
@@ -209,7 +210,24 @@ class _MessageViewState extends State<MessageView>
                     highlightColor: widget.highlightColor,
                     highlightMessage: widget.shouldHighlight,
                   );
-                } else if (widget.message.messageType.isText) {
+                }
+                else if (widget.message.messageType.isTextAndImage) {
+                  return TextAndImageMessageView(
+                    inComingChatBubbleConfig: widget.inComingChatBubbleConfig,
+                    outgoingChatBubbleConfig: widget.outgoingChatBubbleConfig,
+                    isMessageBySender: widget.isMessageBySender,
+                    message: widget.message,
+                    chatBubbleMaxWidth: widget.chatBubbleMaxWidth,
+                    messageReactionConfig: messageConfig?.messageReactionConfig,
+                    highlightColor: widget.highlightColor,
+                    highlightMessage: widget.shouldHighlight,
+                    imageMessageConfig: messageConfig?.imageMessageConfig,
+                    highlightImage: widget.shouldHighlight,
+                    highlightScale: widget.highlightScale,
+                  );
+                }
+
+                else if (widget.message.messageType.isText) {
                   return TextMessageView(
                     inComingChatBubbleConfig: widget.inComingChatBubbleConfig,
                     outgoingChatBubbleConfig: widget.outgoingChatBubbleConfig,
