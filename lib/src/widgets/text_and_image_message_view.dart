@@ -1,12 +1,9 @@
 
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:high_q_chat/high_q_chat.dart';
 import 'package:flutter/material.dart';
-
 import 'package:high_q_chat/src/extensions/extensions.dart';
-import 'package:high_q_chat/src/models/models.dart';
 import 'package:high_q_chat/src/widgets/share_icon.dart';
 import 'package:intl/intl.dart';
 
@@ -58,13 +55,14 @@ class TextAndImageMessageView extends StatelessWidget {
   /// Represents message should highlight.
   final bool highlightMessage;
 
+
   /// Allow user to set color of highlighted message.
   final Color? highlightColor;
-  String get imageUrl => message.message;
+  String get getImageUrl => message.imageUrl!;
 
   Widget get iconButton => ShareIcon(
     shareIconConfig: imageMessageConfig?.shareIconConfig,
-    imageUrl: imageUrl,
+    imageUrl: getImageUrl,
   );
 
   Function(Message)? get _onDownloadTap => isMessageBySender
@@ -86,7 +84,7 @@ class TextAndImageMessageView extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () => imageMessageConfig?.onTap != null
-                      ? imageMessageConfig?.onTap!(imageUrl)
+                      ? imageMessageConfig?.onTap!(getImageUrl)
                       : null,
                   child: Transform.scale(
                     scale: highlightImage ? highlightScale : 1.0,
@@ -112,9 +110,9 @@ class TextAndImageMessageView extends StatelessWidget {
                           borderRadius: imageMessageConfig?.borderRadius ??
                               BorderRadius.circular(14),
                           child: (() {
-                            if (imageUrl.isUrl) {
+                            if (getImageUrl.isUrl) {
                               return Image.network(
-                                imageUrl,
+                                getImageUrl,
                                 fit: BoxFit.fill,
                                 loadingBuilder: (context, child, loadingProgress) {
                                   if (loadingProgress == null) return child;
@@ -129,15 +127,15 @@ class TextAndImageMessageView extends StatelessWidget {
                                   );
                                 },
                               );
-                            } else if (imageUrl.fromMemory) {
+                            } else if (getImageUrl.fromMemory) {
                               return Image.memory(
-                                base64Decode(imageUrl
-                                    .substring(imageUrl.indexOf('base64') + 7)),
+                                base64Decode(getImageUrl
+                                    .substring(getImageUrl.indexOf('base64') + 7)),
                                 fit: BoxFit.fill,
                               );
                             } else {
                               return Image.file(
-                                File(imageUrl),
+                                File(getImageUrl),
                                 fit: BoxFit.fill,
                               );
                             }

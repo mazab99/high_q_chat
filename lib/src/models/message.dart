@@ -35,6 +35,8 @@ class Message {
 
   /// Provides actual message it will be text or image/audio file path.
   final String message;
+  final String? imageUrl;
+
 
   /// Provides actual message it will be text or image/audio file path.
   final String fileName;
@@ -63,6 +65,7 @@ class Message {
   Message({
     this.id = '',
     required this.title,
+     this.imageUrl,
     required this.message,
     this.fileName = '',
     required this.createdAt,
@@ -100,6 +103,7 @@ class Message {
 
   factory Message.fromJson(Map<String, dynamic> json) => Message(
       id: json["id"],
+      imageUrl: json["imageUrl"],
       title: json["title"],
       fileName: json["fileName"],
       message: json["message"],
@@ -114,6 +118,7 @@ class Message {
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
+        'imageUrl': imageUrl,
         'message': message,
         'fileName': fileName,
         'createdAt': createdAt,

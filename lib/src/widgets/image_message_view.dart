@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -10,18 +9,6 @@ import 'reaction_widget.dart';
 import 'share_icon.dart';
 
 class ImageMessageView extends StatelessWidget {
-  const ImageMessageView({
-    Key? key,
-    required this.message,
-    required this.isMessageBySender,
-    this.imageMessageConfig,
-    this.messageReactionConfig,
-    this.inComingChatBubbleConfig,
-    this.outgoingChatBubbleConfig,
-    this.highlightImage = false,
-    this.highlightScale = 1.2,
-  }) : super(key: key);
-
   /// Provides message instance of chat.
   final Message message;
 
@@ -46,29 +33,42 @@ class ImageMessageView extends StatelessWidget {
   /// Provides scale of highlighted image when user taps on replied image.
   final double highlightScale;
 
-  String get imageUrl => message.message;
+  String get getImageUrl => message.imageUrl!;
 
   Widget get iconButton => ShareIcon(
         shareIconConfig: imageMessageConfig?.shareIconConfig,
-        imageUrl: imageUrl,
+        imageUrl: getImageUrl,
       );
 
   Function(Message)? get _onDownloadTap => isMessageBySender
       ? outgoingChatBubbleConfig?.onDownloadTap
       : inComingChatBubbleConfig?.onDownloadTap;
 
+  const ImageMessageView({
+    super.key,
+    required this.message,
+    required this.isMessageBySender,
+    this.imageMessageConfig,
+    this.messageReactionConfig,
+    this.inComingChatBubbleConfig,
+    this.outgoingChatBubbleConfig,
+    this.highlightImage = false,
+    this.highlightScale = 1.2,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: isMessageBySender ? MainAxisAlignment.end : MainAxisAlignment.start,
+      mainAxisAlignment:
+          isMessageBySender ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
         if (isMessageBySender) iconButton,
         Stack(
           children: [
             GestureDetector(
               onTap: () => imageMessageConfig?.onTap != null
-                  ? imageMessageConfig?.onTap!(imageUrl)
+                  ? imageMessageConfig?.onTap!(getImageUrl)
                   : null,
               child: Transform.scale(
                 scale: highlightImage ? highlightScale : 1.0,
@@ -94,9 +94,9 @@ class ImageMessageView extends StatelessWidget {
                       borderRadius: imageMessageConfig?.borderRadius ??
                           BorderRadius.circular(14),
                       child: (() {
-                        if (imageUrl.isUrl) {
+                        if (getImageUrl.isUrl) {
                           return Image.network(
-                            imageUrl,
+                            getImageUrl,
                             fit: BoxFit.fill,
                             loadingBuilder: (context, child, loadingProgress) {
                               if (loadingProgress == null) return child;
@@ -111,15 +111,15 @@ class ImageMessageView extends StatelessWidget {
                               );
                             },
                           );
-                        } else if (imageUrl.fromMemory) {
+                        } else if (getImageUrl.fromMemory) {
                           return Image.memory(
-                            base64Decode(imageUrl
-                                .substring(imageUrl.indexOf('base64') + 7)),
+                            base64Decode(getImageUrl
+                                .substring(getImageUrl.indexOf('base64') + 7)),
                             fit: BoxFit.fill,
                           );
                         } else {
                           return Image.file(
-                            File(imageUrl),
+                            File(getImageUrl),
                             fit: BoxFit.fill,
                           );
                         }

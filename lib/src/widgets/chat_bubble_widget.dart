@@ -321,8 +321,7 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
                       ?.call(widget.message.replyMessage.messageId),
                 ),
         MessageView(
-          outgoingChatBubbleConfig:
-              widget.chatBubbleConfig?.outgoingChatBubbleConfig,
+          outgoingChatBubbleConfig: widget.chatBubbleConfig?.outgoingChatBubbleConfig,
           isLongPressEnable:
               (featureActiveConfig?.enableReactionPopup ?? true) ||
                   (featureActiveConfig?.enableReplySnackBar ?? true),

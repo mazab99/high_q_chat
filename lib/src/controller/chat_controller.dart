@@ -85,6 +85,7 @@ class ChatController {
       reaction: message.reaction,
       messageType: message.messageType,
       status: message.status,
+      imageUrl: message.imageUrl,
     );
     messageStreamController.sink.add(initialMessageList);
   }
